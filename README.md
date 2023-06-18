@@ -22,3 +22,8 @@ The first AI will roll the dice, and then you will roll the dice. Don't be disap
 당신과 AI에게는 총 2번의 주사위를 굴릴 기회가 주어집니다.
 이 게임은 단순하게 더 높은 주사위 평균 값을 내는 쪽이 이깁니다.
 AI는 주사위를 굴릴 수도 안 굴릴 수도 있습니다. 당신이 굴리지 않는 쪽이 유리할 경우 당신은 자동으로 승리합니다.
+
+//참조 - 주사위 굴리기 및 눈 감지
+https://www.youtube.com/watch?v=ouGJJzNPsSk
+// 주사위 모델 출처
+https://free3d.com/3d-model/low-poly-dice-50162.html
