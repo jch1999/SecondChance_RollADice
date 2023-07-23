@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private Dice gameDice;
+    bool isDiceRolled;
 
     [SerializeField]
     DiceCheckZone checker;
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // gameDice=GameObject.Find("Dice").GetComponent<Dice>();
+        isDiceRolled=false;
     }
 
     // Update is called once per frame
@@ -37,9 +39,9 @@ public class GameManager : MonoBehaviour
             //주사위가 실제로 돌아갔는지 확인 -> dice로 이동
             // if(!gameDice.diceStop&&gameDice.isRoll)checkDiceRolled=true;
 
-            if(gameDice.diceStop&&gameDice.checkDiceRolled)
+            if(gameDice.diceStop&&isDiceRolled)
             {
-                gameDice.checkDiceRolled=false;
+                isDiceRolled=false;
                 // gameDice.isStopWaiting=false;
                 Debug.Log("DiceStopped");
                 TurnCheck();
@@ -92,7 +94,9 @@ public class GameManager : MonoBehaviour
 
     public void UserRollDice()
     {
-        gameDice.isRoll=true;
+        // gameDice.isRoll=true;
+        gameDice.RollADice();
+        isDiceRolled=true;
         _UIManager.SwitchUserRollButton(false);
         IsUserTurn=true;
     }
@@ -103,9 +107,11 @@ public class GameManager : MonoBehaviour
         if(UserScore>AutoScore && !isSecondChance[0])
         {
             isSecondChance[0]=true;
-            gameDice.diceStop=false;
+            // gameDice.diceStop=false;
+            gameDice.RollADice();
+            isDiceRolled=true;
             IsUserTurn=false;
-            gameDice.isRoll=true;
+            // gameDice.isRoll=true;
             _UIManager.TurnTextSwitch("Auto Turn");
         }
         //auto의 두 번째 던지기에서도 auto가 이기지 못햇다면 user의 승리다.
@@ -123,9 +129,11 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        gameDice.isRoll=true;
+        // gameDice.isRoll=true;
         // Invoke()
         IsStarted=true;
+        isDiceRolled=true;
+        gameDice.RollADice();
     }
 
     // public void TurnStart()
